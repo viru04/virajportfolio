@@ -557,6 +557,10 @@ video {
     width: 70vw
 }
 
+.w-\[75vw\] {
+    width: 75vw
+}
+
 .w-\[80vw\] {
     width: 80vw
 }
@@ -579,6 +583,10 @@ video {
 
 .transform {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.cursor-pointer {
+    cursor: pointer
 }
 
 .flex-row {
@@ -691,6 +699,15 @@ video {
     border-width: 1px
 }
 
+.border-2 {
+    border-width: 2px
+}
+
+.border-black {
+    --tw-border-opacity: 1;
+    border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
 .border-gray-300 {
     --tw-border-opacity: 1;
     border-color: rgb(209 213 219 / var(--tw-border-opacity))
@@ -762,19 +779,24 @@ video {
     padding-right: .25rem
 }
 
+.px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
+}
+
 .px-4 {
     padding-left: 1rem;
     padding-right: 1rem
 }
 
-.px-64 {
-    padding-left: 16rem;
-    padding-right: 16rem
-}
-
 .py-1 {
     padding-top: .25rem;
     padding-bottom: .25rem
+}
+
+.py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem
 }
 
 .py-2 {
@@ -961,6 +983,12 @@ video {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: .15s
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
 }
 
 .instagram:hover {
@@ -1170,7 +1198,7 @@ body {
 }
 
 .waviy span {
-    font-family: Alfa Slab One, cursive;
+    font-family: Montserrat, sans-serif;
     position: relative;
     display: inline-block;
     color: #000;
@@ -1184,6 +1212,24 @@ body {
     0%,
     80% {
         transform: rotateY(360deg)
+    }
+}
+
+#AboutMe-page {
+    animation: conicalTransition 4s
+}
+
+@keyframes conicalTransition {
+    0% {
+        -webkit-clip-path: circle(10% at 50% 0%);
+        clip-path: circle(10% at 50% 0%);
+        background-color: #87cefa
+    }
+
+    to {
+        -webkit-clip-path: circle(100% at 50% 100%);
+        clip-path: circle(100% at 50% 100%);
+        background-color: azure
     }
 }
 
@@ -1357,13 +1403,3 @@ body {
         line-height: 1
     }
 }
-
-
-#AboutMe-page{
-    animation: conicalTransition 4s;
-  }
-  
-  @keyframes conicalTransition {
-    from { clip-path: circle(10% at 50% 0%); background-color: lightskyblue; }
-    to { clip-path: circle(100% at 50% 100%); background-color: azure; }
-  }
