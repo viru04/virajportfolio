@@ -1403,3 +1403,27 @@ body {
         line-height: 1
     }
 }
+
+
+.nav-anchor{
+  position: relative;
+}
+
+.nav-anchor::after{
+  display: none;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 4px;
+  translate: var(--left ,0px) 0;
+  transform-origin: right;
+  transition: 0.2s;
+  background-color: skyblue;
+  border-radius: 10%;
+}
+
+.nav-anchor:hover::after{
+  display: block;
+}
