@@ -1293,6 +1293,7 @@ body {
     .coding-img {
         display: none
     }
+    
 }
 
 :root {
@@ -1305,13 +1306,13 @@ body {
 
 .img-wrap {
     position: relative;
-    padding: 30px
+    /* padding: 30px; */
 }
 
 .img-wrap:after {
     content: "";
     border-radius: 100%;
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -1322,12 +1323,23 @@ body {
     mask: radial-gradient(farthest-side, transparent calc(100% - var(--border)), #fff calc(100% - var(--border) + 1px))
 }
 
+@media (min-width:1200px) {
+    .img-wrap:after{
+        display: block;
+    }
+    .img-wrap {
+        position: relative;
+        padding: 30px;
+    }
+}
+
 .my-img {
     border-radius: 100%;
     display: block;
     width: calc(100vw - 80px);
     max-width: 250px;
-    height: auto
+    height: auto;
+    margin: 0 auto;
 }
 
 .hover\:cursor-pointer:hover {
@@ -1500,3 +1512,4 @@ body {
         line-height: 1
     }
 }
+
