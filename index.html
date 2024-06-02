@@ -21,6 +21,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Montserrat:wght@200&family=Raleway:wght@300&display=swap"
     rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+        
   <link rel="icon" type="image/x-icon" href="./assets/profile_photo-57940299-57940299.jpg">
   <title>Viraj's Portfolio</title>
 
@@ -99,7 +106,7 @@
 
       <div class="flex justify-center align-middle h-40 py-32">
         <div class="about-btn">
-          <span class="hover:text-white text-5xl" id="abt-me" onclick="showAboutMe()">About Me</span>
+          <span class="hover:text-white text-5xl"><a href="./assets/resume.pdf" target="_blank">Resume</a></span>
         </div>
       </div>
     </div>
@@ -120,6 +127,7 @@
 
 
 <!-- Projects -->
+
 <div class="flex flex-col gap-10 py-48" id="Projects">
   <div class="flex flex-col gap-5">
     <div class=" text-8xl font-extralight h-[15%] rounded-3xl text-[#000000] mx-auto">
@@ -140,38 +148,57 @@
 
   <div class="w-[15vw] h-1 bg-[#79a4cc] rounded-sm mx-auto"></div>
 
-
-  <div class="w-[70vw]  h-[60vh] flex flex-col lg:flex-row justify-around mx-auto mt-28">
-
-    <div class="bg-white w-[50%] h-[50%] lg:w-[30%] h-[120%] flex flex-col gap-5  border rounded justify-center text-[#123456]" style="font-family: 'Poppins', sans-serif;">
-      <img src="./assets/chatbot-a6321f73.png" class="w-[300px] mx-auto" alt="">
-      <h1 class="mx-auto text-[2rem] font-bold">Chatbot</h1>
-
-      <h1 class="mx-auto">A chatbot to answer all your queries</h1>
-
-      <h3 class="mx-auto">Technologies Used: HTML,CSS and JS</h3>
-
-      <h2 class="mx-auto">Live Demo link : <a href="https://chatbotvt.netlify.app/" target="_blank" class="underline">Click here</a></h2>
-      <h2 class="mx-auto">Github link : <a href="https://github.com/viru04/chatBot" target="_blank" class="underline">Click here</a></h2>
+  <section class="md:h-full flex flex-col lg:flex-row text-gray-600">
+    <div class="p-4 sm:w-1/2 lg:w-1/3 mx-auto">
+        <div class="h-full border-2 border-gray-250 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="lg:h-72 md:h-48 w-full object-cover object-center"
+                src="./assets/codewithme.png" alt="blog">
+            <div class="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
+              <h1 class="text-2xl font-semibold mb-3">CODEWITHME</h1>
+                <h2 class="text-base font-medium text-blue mb-1">A real time collaborative code editor with various features</h2>
+                
+                <p class="leading-relaxed mb-3">Implemented a real time collaborative code editor including video chat and whiteboard features, boosting collaboration efficiency and user retention with
+                  Differential Synchronization to reduce data transfer
+                  </p>
+                  <h2 class="text-base font-medium text-black mb-1">Technologies Used : Socket.io, WebRTC, Node.js, Express.js, React.js, and MongoDB</h2>
+                <div class="flex items-center flex-wrap ">
+                  
+                    <a href="https://www.codechef.com/users/viraj2003" target="_blank"class="text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0">Live Demo</a>
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1
+                     ">Github</span>
+    
+                </div>
+            </div>
+        </div>
     </div>
-
-
+    <div class="p-4 sm:w-1/2 lg:w-1/3 mx-auto">
+      <div class="h-full border-2 border-gray-250 border-opacity-60 rounded-lg overflow-hidden">
+          <img class="lg:h-72 md:h-48 w-full object-cover object-center"
+              src="./assets/devops.png" alt="blog">
+          <div class="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
+            <h1 class="text-2xl font-semibold mb-3">DEVOPS-CI/CD PIPELINE</h1>
+              <h2 class="text-base font-medium text-blue mb-1">A real time collaborative code editor with various features</h2>
+              
+              <p class="leading-relaxed mb-3">Team project, a comprehensive CI/CD pipeline using Opensource tools on AWS.
+                Configured Terraform for automating Infrastructure Creation and Jenkins master node .
+                Learned the basics of DevOps, the significance of Jenkins, and advanced CI/CD practices.
+                </p>
+                <br>
+              <div class="flex items-center flex-wrap ">
+                
+                  <a href="https://www.codechef.com/users/viraj2003" target="_blank"class="text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0">Live Demo</a>
+                  <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1
+                   ">Github</span>
   
-
-    <div class="bg-white w-[50%] h-[50%] lg:w-[30%] h-[120%] flex flex-col gap-5  border rounded justify-center text-[#123456]" style="font-family: 'Poppins', sans-serif;">
-      <img src="./assets/Feedtrack-logo-b59ffb7b-b59ffb7b.png" class="w-[300px] mx-auto" alt="">
-      <h1 class="mx-auto text-[2rem] font-bold">FeedTrack</h1>
-
-      <h1 class="mx-auto">An app made for tracking feedback <br>and attendance</h1>
-
-      <h3 class="mx-auto">Technologies Used: Android App Development</h3>
-
-      <!-- <h2 class="mx-auto">Live Demo link : <a href="" class="underline">Click here</a></h2> -->
-      <h2 class="mx-auto">Github link : <a href="https://github.com/LegendsHub/FeedTrack" target="_blank" class="underline">Click here</a></h2>
-    </div>
-
+              </div>
+          </div>
+      </div>
   </div>
-</div>
+</section>
+<section class="md:h-full flex items-center text-gray-600">
+  
+</section>
+ 
 
 
 
@@ -242,6 +269,21 @@
           <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">React.js</h4>
         </div>
       </div>
+
+      <div class="flex justify-evenly">
+        <div class="text-black flex flex-col gap-5">
+          <img src="./assets/java.png" style="width: 80px;" alt="">
+          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">JAVA</h4>
+        </div>
+        <div class="text-black flex flex-col gap-5">
+          <img src="./assets/terraform.svg" style="width: 80px;" alt="">
+          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">TERRAFORM</h4>
+        </div>
+        <div class="text-black flex flex-col gap-5">
+          <img src="./assets/jenkins.png" style="width: 100px;" alt="">
+          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">JENKINS</h4>
+        </div>
+      </div>
       
     </div>
   </div>
@@ -270,7 +312,6 @@
                 <span style="--i:6">g</span>
               </div>
               <div>
-                <span style=""> </span>
                 <span style="--i:8">P</span>
                 <span style="--i:8">r</span>
                 <span style="--i:8">o</span>
@@ -396,94 +437,8 @@
 
 <!-- Nav Button -->
 <button onclick="topFunction()" id="myBtn" title="Go to top"><a href="#Nav"><i class="fa-regular fa-circle-up fa-bounce text-5xl mt-2 hover:text-blue-500" class="nav-top"></i></a></button>
-
-
-
-</div>
-
   
-
-  <!-- AboutMe Page -->
-  
-  <div class="w-[100vw] h-[140vh] bg-white absolute top-0 left-0 right-0" id="AboutMe-page" style="display: none;">
-    
-    <div class="w-[100vw] px-10 py-10 text-3xl cursor-pointer " style="font-family: 'Bowlby One SC', cursive;" id="Home"><span onclick="hideAboutMe()" class= "border-2 px-1 py-1 border-black rounded-md">Home</span> </div>
-    <div class="flex flex-col gap-3 text-9xl">
-      <span class="mx-auto justify-center" style="font-family: 'Bowlby One SC', cursive;">Viraj Takone</span>
-      <span class="mx-auto text-xl font-extralight" >Always exploring and learning new things....</span>
-    </div>
-
-    <div class="flex w-full h-[60vh] justify-center gap-10 py-16">
-      <div class="w-[30%] flex flex-col gap-20">
-        <div class="flex flex-col gap-5" style="font-family: 'Montserrat', sans-serif;">
-          <h1 class="font-extrabold text-3xl">Frontend Technologies</h1>
-
-          <p class="font-bold">HTML , CSS , JS , React.js</p>
-        </div>
-        <div class="flex flex-col gap-5" style="font-family: 'Montserrat', sans-serif;">
-          <h1 class="font-extrabold text-3xl">Backend Technologies</h1>
-
-          <p class="font-bold">None</p>
-        </div>
-
-        <div class="flex flex-col gap-5" style="font-family: 'Montserrat', sans-serif;">
-          <h1 class="font-extrabold text-3xl">Education</h1>
-
-          <p class="font-bold">Walchand College of Engineering , Sangli <br> B.tech in Information Technology (2021-25) <br>CGPA: 8.05 (Till 4th Sem)</p>
-        </div>
-      </div>
-      <div class="w-[40%] flex flex-col gap-10">
-        <div class="flex flex-col gap-5" style="font-family: 'Montserrat', sans-serif;">
-          <h1 class="font-extrabold text-3xl">Postion of Responsibilties</h1>
-
-          <p class="font-bold">WCE ACM Student Chapter <br>Management Team Representative : Learned to handle big events by working with our  main  board members and lot much <br> Member</p>
-          <p class="font-bold">WCE SAIT <br>Program Director <br>Assistant Program Director</p>
-        </div>
-
-        <div class="flex flex-col gap-5 text-xl font-bold" style="font-family: 'Montserrat', sans-serif;">
-          <h1 class="font-extrabold text-3xl">Hobbies and Interest</h1>
-          Rather than technical stuff , I enjoy playing cricket a lot. I also enjoy visiting various tourist spots 
-          I mostly like hillstations to visit , Also I like to go on rides with freinds .Rather I also love to listen songs and to explore different types of food items.
-          That's All about Me.
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[75vw] flex flex-col  mx-auto mt-28" style="font-family: 'Bowlby One SC', cursive;">
-      <div class="w-full flex flex-col gap-8">
-        <h1 class="text-7xl">Let's Talk</h1>
-        <h3 class="text-4xl">Will Be Happy to Work</h3>
-      </div>
-
-      <div class="flex  w-full  py-20  gap-36">
-        <h3 class="flex gap-5 text-4xl"> <i class="fa-sharp fa-solid fa-circle-play"></i>Connect With me!</h3>
-        <ul class="flex  text-black gap-5 text-4xl">
-          <li class=""><a href="https://www.linkedin.com/in/viraj-takone-a93745224" target="_blank"><i
-                class="fa-brands fa-linkedin linkedin"></i></a></li>
-          <li class="github"><a href="https://github.com/viru04" target="_blank"><i
-                class="fa-brands fa-github github"></i></a></li>
-          <li class="instagram"><a href="https://instagram.com/viraj_a_t?igshid=NGExMmI2YTkyZg==" target="_blank"><i
-                class="fa-brands fa-instagram instagram"></i></a></li>
-
-        </ul>
-      </div>
-
-    </div>
-  
-  </div>
- 
-
-
-  <!-- project-pages info -->
-  <div class="w-[100vw] h-[140vh] bg-white"  id="project-page" style="display: none;">
-    
-     <h3>I have made this chat bot in order to understand and clear the concepts of hTML,CSS and JS</h3>
-     <h2>Technologies Used: HTML,CSS,JS and TailwindCSS</h2>
-     <a href="">Live Demo link</a>
-     <a href="">Github link</a>
-  </div>
-  
-  <script src="./assets/script.js"></script>
+<script src="./assets/script.js"></script>
 </body>
 
 </html>
