@@ -1,454 +1,1134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <script src="https://kit.fontawesome.com/b4bd1eb4c7.js" crossorigin="anonymous"></script>
+  <title>Viraj Takone — Full Stack Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel&family=Dosis:wght@200&family=Lobster&family=Poppins:wght@300&family=Tilt+Prism&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Montserrat:wght@200&family=Raleway:wght@300&display=swap"
-    rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        
-  <link rel="icon" type="image/x-icon" href="./assets/profile_photo-57940299-57940299.jpg">
-  <title>Viraj's Portfolio</title>
+    :root {
+      --bg: #0c0f14;
+      --bg2: #111520;
+      --bg3: #161b27;
+      --card: #1a2030;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #7a8099;
+      --accent: #5b8af5;
+      --accent2: #8b5cf6;
+      --accent3: #34d399;
+      --grad: linear-gradient(135deg, var(--accent), var(--accent2));
+      --nav-bg: rgba(12,15,20,0.85);
+      --shadow: 0 4px 24px rgba(0,0,0,0.18);
+      --font-head: 'DM Serif Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --theme-transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
 
-  <script>
-    const navToggle = document.getElementById('navToggle');
-    const navItems = document.querySelector('.hidden-nav-items');
+    /* ── LIGHT THEME ── */
+    html.light {
+      --bg: #f5f6fa;
+      --bg2: #eceef5;
+      --bg3: #e2e4ef;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #3b6ef0;
+      --accent2: #7c3aed;
+      --accent3: #059669;
+      --nav-bg: rgba(245,246,250,0.9);
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
 
-    navToggle.addEventListener('change', () => {
-      if (navToggle.checked) {
-        navItems.classList.add('show-nav-items');
-      } else {
-        navItems.classList.remove('show-nav-items');
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: var(--theme-transition);
+    }
+
+    *, *::before, *::after {
+      transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── GLOW BLOBS ── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -200px; }
+    .blob-2 { width: 500px; height: 500px; background: var(--accent2); bottom: -100px; left: -150px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: #fff; }
+
+    /* hamburger */
+    .nav-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu { display: none; }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      width: 44px;
+      height: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.3s ease, background 0.3s;
+    }
+    html.light .theme-toggle::after {
+      transform: translateX(20px);
+    }
+    .theme-icon {
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s;
+    }
+    .theme-icon:hover { transform: rotate(20deg); }
+
+    /* ── HERO LAYOUT WITH PHOTO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px clamp(1.5rem, 8vw, 8rem) 0;
+      z-index: 1;
+    }
+
+    .hero-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .hero-inner { flex: 1; max-width: 600px; }
+
+    .hero-photo-wrap {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .hero-photo-ring {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      padding: 4px;
+      background: var(--grad);
+      box-shadow: 0 0 60px rgba(91,138,245,0.25);
+    }
+
+    .hero-photo-ring img,
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo-placeholder {
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem;
+      border: 2px dashed var(--border);
+      cursor: default;
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 2rem;
       }
-    });
-  </script>
-  <link rel="stylesheet" href="./assets/index-6e79be6a.css">
+      .hero-photo-ring { width: 160px; height: 160px; }
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-role {
+      font-family: var(--font-head);
+      font-style: italic;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--grad);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: clamp(1.5rem, 8vw, 8rem);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100% { opacity: 0.4 } 50% { opacity: 1 } }
+
+    /* ── SECTION COMMONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem clamp(1.5rem, 8vw, 8rem);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-line {
+      width: 48px;
+      height: 3px;
+      background: var(--grad);
+      border-radius: 2px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      max-width: 780px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--grad);
+    }
+    .exp-card:hover { border-color: rgba(91,138,245,0.3); }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent3);
+      background: rgba(52,211,153,0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .exp-role {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+      gap: 1.5rem;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 12px;
+      z-index: 0;
+    }
+    .proj-card:hover { transform: translateY(-6px); border-color: rgba(91,138,245,0.4); box-shadow: 0 20px 60px rgba(91,138,245,0.1); }
+
+    .proj-card > * { position: relative; z-index: 1; }
+
+    .proj-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(91,138,245,0.12);
+      border: 1px solid rgba(91,138,245,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .proj-title {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+    }
+
+    .proj-sub {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .proj-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      flex: 1;
+      line-height: 1.65;
+    }
+
+    .proj-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.7rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+    }
+
+    .proj-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .proj-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: opacity 0.2s;
+    }
+    .proj-links a:hover { opacity: 0.7; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .skill-group:hover { border-color: rgba(91,138,245,0.3); }
+
+    .skill-group-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-size: 0.8rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+    }
+
+    .ach-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.3s;
+    }
+    .ach-item:hover { border-color: rgba(91,138,245,0.3); }
+
+    .ach-num {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+      min-width: 2rem;
+    }
+
+    .ach-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── CODING PROFILES ── */
+    .profiles-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .profile-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .profile-link:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .profile-link .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent3);
+    }
+    .profile-link span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      max-width: 600px;
+    }
+
+    .contact-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(91,138,245,0.1);
+      border: 1px solid rgba(91,138,245,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .contact-info {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem clamp(1.5rem, 8vw, 8rem);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .hero-inner .hero-tag  { animation-delay: 0.1s; }
+    .hero-inner .hero-name { animation-delay: 0.2s; }
+    .hero-inner .hero-role { animation-delay: 0.3s; }
+    .hero-inner .hero-desc { animation-delay: 0.4s; }
+    .hero-inner .hero-actions { animation-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+
+      .mobile-menu {
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+        z-index: 99;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.06em;
+      }
+
+      .ach-list { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 4rem 1.5rem; }
+      .exp-card { padding: 1.5rem; }
+    }
+
+    /* Animated gradient text */
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
 </head>
-
 <body>
-  
 
-<div id="full-content">
-  <!-- Nav Bar -->
-    <nav class="myname flex bg-[#022a53] text-white justify-around py-3 font-light hover:cursor-pointer" id="Nav" style="font-family: 'Raleway', sans-serif;">
-  <img src="./assets/viraj-3e7613ae.png" class="h-[40px]" alt="">
-  <input type="checkbox" id="navToggle">
-  <label for="navToggle" class="vis">&#9776;</label>
-  <ul class="flex space-x-0 lg:space-x-10 text-xl hidden-nav-items font-medium">
-    <a href="#About-me">
-      <li class=" px-1 py-1 nav-anchor">About</li>
-    </a>
-    <a href="#Projects">
-      <li class=" px-1 py-1 nav-anchor">Projects</li>
-    </a>
-    <a href="#Skills">
-      <li class=" px-1 py-1 nav-anchor">Skills</li>
-    </a>
-    <a href="#Contact">
-      <li class=" px-1 py-1 nav-anchor">Contact</li>
-    </a>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">VT<span>.</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+
+  <a class="nav-cta" href="./assets/resume.pdf" target="_blank">Resume</a>
+
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <span class="theme-icon" id="themeIcon" onclick="toggleTheme()" title="Toggle theme">🌙</span>
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
+  </div>
+
+  <div class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
-
-<!--Introduction Page-->
-<div class="wrapper w-full relative">
-  <div class="About-me w-full flex flex-col md:flex-row justify-around py-28 lg:py-32 static text-5xl" id="About-me">
-    <div class="max-w-[50%] flex flex-col justify-between  mt-20 gap-10 mx-auto md:mx-0">
-      <div  class="img-wrap mx-auto" >
-        <img src="./assets/profile_photo-467da03d.jpg" class="my-img" width="360" height="360" alt="">
-      </div>
-    </div>
-    <div class=" text-black  flex flex-col  max-w-[800px] ml-10 mr-10 lg:ml-0 lg:mr-0 mt-10"
-      style="font-family: 'Bowlby One SC', cursive;">
-      <div class="flex flex-col w-full gap-8 ml-5">
-        <div class="flex flex-col gap-8">
-          <h1 class="text-4xl  lg:text-7xl mt-20 hand ">Hi There <i class="fa-solid fa-hand fa-bounce"
-              style="color: #f2ad3e;"></i> Iam</h1>
-          <span class="text-[#5aa0eb] font-normal text-6xl">Viraj Takone</span>
-        </div>
-        <div>
-          <h3 class="text-[#000000]  sm:text-5xl text-3xl">Iam a Passionate</h3>
-          <span id="element" class="text-2xl lg:text-5xl font-normal"></span>
-        </div>
-
-
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-        <script>
-          var typed = new Typed('#element', {
-            strings: ['Competetive Programmer', 'Good Problem Solver', 'Web Developer',],
-            typeSpeed: 50,
-          });
-        </script>
-      </div>
-
-
-      <div class="flex justify-center align-middle h-40 py-32">
-        <div class="about-btn">
-          <span class="hover:text-white text-5xl"><a href="./assets/Viraj_UCV.pdf" target="_blank">Resume</a></span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-     <div class="w-[70vw] h-0.5 bg-slate-500 rounded-sm mx-auto"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="./assets/Viraj_UCV.pdf" target="_blank" style="color:var(--accent);">Resume ↗</a>
 </div>
 
-
-
-
-
-
-
-
-<!-- Projects -->
-
-<div class="flex flex-col gap-10 py-48" id="Projects">
-  <div class="flex flex-col gap-5">
-    <div class=" text-8xl font-extralight h-[15%] rounded-3xl text-[#000000] mx-auto">
-      <!-- <h1 style="font-family: 'Poppins', sans-serif;">Projects</h1> -->
-    <div class="waviy font-bold text-5xl lg:text-7xl">
-   <span style="--i:1">P</span>
-   <span style="--i:2">r</span>
-   <span style="--i:3">o</span>
-   <span style="--i:4">j</span>
-   <span style="--i:5">e</span>
-   <span style="--i:6">c</span>
-   <span style="--i:7">t</span>
-   <span style="--i:8">s</span>
-  </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-layout">
+    <div class="hero-inner">
+      <p class="hero-tag fade-up">Available for opportunities</p>
+      <h1 class="hero-name fade-up">Viraj<br><span class="grad-text">Takone</span></h1>
+      <p class="hero-role fade-up">Full Stack Developer</p>
+      <p class="hero-desc fade-up">
+        I build scalable web applications end-to-end — clean APIs, sharp UIs, and everything in between.
+        Currently working at <strong style="color:var(--text);">UBS Business Solutions</strong>, Pune.
+      </p>
+      <div class="hero-actions fade-up">
+        <a class="btn-primary" href="#projects">View Projects ↓</a>
+        <a class="btn-outline" href="mailto:virajtakone304@gmail.com">Get in Touch</a>
+      </div>
     </div>
-  </div>
 
-
-  <div class="w-[15vw] h-1 bg-[#79a4cc] rounded-sm mx-auto"></div>
-
-<section class="md:h-full flex flex-col lg:flex-row text-gray-600">
-  <!-- Project 1 -->
-  <div class="p-4 sm:w-1/2 lg:w-1/3 mx-auto">
-    <div class="h-full border-2 border-gray-250 border-opacity-60 rounded-lg overflow-hidden">
-      <img class="lg:h-72 md:h-48 w-full object-cover object-center"
-        src="./assets/codewithme.png" alt="blog">
-      <div class="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
-        <h1 class="text-2xl font-semibold mb-3">CODEWITHME</h1>
-        <h2 class="text-base font-medium text-blue mb-1">A real-time collaborative code editor with various features</h2>
-        <p class="leading-relaxed mb-3">Implemented a real-time collaborative code editor including video chat and whiteboard features, boosting collaboration efficiency and user retention with Differential Synchronization to reduce data transfer.</p>
-        <h2 class="text-base font-medium text-black mb-1">Technologies Used : Socket.io, WebRTC, Node.js, Express.js, React.js, and MongoDB</h2>
-        <div class="flex items-center flex-wrap">
-          <a href="https://www.codechef.com/users/viraj2003" target="_blank" class="text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0">Live Demo</a>
-          <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">Github</span>
-        </div>
+    <div class="hero-photo-wrap fade-up">
+      <div class="hero-photo-ring">
+        <!-- PHOTO: replace the div below with <img src="your-photo.jpg" alt="Viraj Takone"> once you upload your picture -->
+        <div class="hero-photo-placeholder"><img src="./assets/Profile-pic.jpg"></div>
       </div>
     </div>
   </div>
-
-  <!-- Project 2 -->
-  <div class="p-4 sm:w-1/2 lg:w-1/3 mx-auto">
-    <div class="h-full border-2 border-gray-250 border-opacity-60 rounded-lg overflow-hidden">
-      <img class="lg:h-72 md:h-48 w-full object-cover object-center"
-        src="./assets/devops.png" alt="blog">
-      <div class="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
-        <h1 class="text-2xl font-semibold mb-3">DEVOPS-CI/CD PIPELINE</h1>
-        <h2 class="text-base font-medium text-blue mb-1">Automated DevOps Infrastructure on AWS</h2>
-        <p class="leading-relaxed mb-3">Team project, a comprehensive CI/CD pipeline using Opensource tools on AWS. Configured Terraform for automating Infrastructure Creation and Jenkins master node. Learned the basics of DevOps, the significance of Jenkins, and advanced CI/CD practices.</p>
-        <div class="flex items-center flex-wrap">
-          <a href="https://www.codechef.com/users/viraj2003" target="_blank" class="text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0">Live Demo</a>
-          <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">Github</span>
-        </div>
-      </div>
-    </div>
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    scroll
   </div>
-
-  <!-- Project 3 -->
-<div class="p-4 sm:w-1/2 lg:w-1/3 mx-auto">
-  <div class="h-full border-2 border-gray-250 border-opacity-60 rounded-lg overflow-hidden">
-    <img class="lg:h-72 md:h-48 w-full object-cover object-center"
-      src="./assets/Stock_Predictor.png"
-      alt="AI-Based Stock Predictor">
-    <div class="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
-      <h1 class="text-2xl font-semibold mb-3">AI-Based Stock Predictor</h1>
-      <h2 class="text-base font-medium text-blue mb-1">RSI Wave Analysis with Generative Insights</h2>
-      <p class="leading-relaxed mb-3">Built a stock prediction tool using LSTM to forecast prices with technical indicators like RSI and simplified Elliott Wave Theory. Integrated Generative AI to produce natural language summaries and insights from predicted trends.</p>
-      <h2 class="text-base font-medium text-black mb-1">Technologies Used: Python, LSTM, yFinance, Matplotlib, React.js, Generative AI</h2>
-      <div class="flex items-center flex-wrap">
-        <a href="https://viru04.github.io/AI-Driven-Stock-Predictor" target="_blank" class="text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0">Live Demo</a>
-        <a href="https://github.com/viru04/AI-Driven-Stock-Predictor" target="_blank" class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">Github</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 </section>
 
-<section class="md:h-full flex items-center text-gray-600">
-  
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">01 / Experience</p>
+  <h2 class="section-title">Where I've Worked</h2>
+  <div class="section-line"></div>
+
+  <div class="exp-card">
+    <div class="exp-top">
+      <h3 class="exp-company">UBS Business Solutions</h3>
+      <span class="exp-period">Aug 2025 – Present</span>
+    </div>
+    <p class="exp-role">Full Stack Developer (Graduate Trainee) — Pune, India</p>
+    <ul class="exp-bullets">
+      <li>Built internal web application with React.js and Spring Boot to support business workflows</li>
+      <li>Designed and maintained REST APIs for frontend integration, improving application responsiveness</li>
+      <li>Developed reusable UI components keeping the codebase scalable and maintainable</li>
+      <li>Optimized database queries and handled edge cases to improve backend performance</li>
+      <li>Collaborated with designers, backend engineers, and QA in an Agile environment</li>
+      <li>Debugged production issues and participated in code reviews to maintain code quality</li>
+    </ul>
+  </div>
 </section>
- 
 
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">02 / Projects</p>
+  <h2 class="section-title">Things I've Built</h2>
+  <div class="section-line"></div>
 
+  <div class="projects-grid">
 
-  <!-- Technical Skills -->
-  <div class="static flex flex-col   mt-48  w-full mb-32 gap-16" id="Skills">
-    <div class="flex flex-col gap-12 py-5">
-      <div class=" text-7xl font-thin h-[15%] rounded-3xl text-[#000000] mx-auto">
-        <!-- <h1 style="font-family: 'Poppins', sans-serif;">Technical Skills</h1> -->
-        <div class="waviy font-bold text-4xl lg:text-7xl">
-          <div class="flex flex-col lg:flex-row">
-            <div>
-              <span style="--i:1">T</span>
-              <span style="--i:2">e</span>
-              <span style="--i:3">c</span>
-              <span style="--i:4">h</span>
-              <span style="--i:5">n</span>
-              <span style="--i:6">i</span>
-              <span style="--i:7">c</span>
-              <span style="--i:8">a</span>
-              <span style="--i:8">l</span>
-            </div>
-            <div>
-              <span style="--i:8"></span>
-              <span style="--i:8"></span>
-              <span style="--i:8"></span>
-              <span style="--i:8">s</span>
-              <span style="--i:8">k</span>
-              <span style="--i:8">i</span>
-              <span style="--i:8">l</span>
-              <span style="--i:8">l</span>
-              <span style="--i:8">s</span>
-            </div>
-            
-          </div>
-          
-         </div>
+    <div class="proj-card">
+      <div class="proj-icon">💻</div>
+      <div>
+        <p class="proj-sub">Real-time Collaboration</p>
+        <h3 class="proj-title">CodeWithMe</h3>
       </div>
-      <div class="w-[5vw] h-1 bg-slate-500 rounded-sm mx-auto"></div>
+      <p class="proj-desc">
+        A real-time collaborative coding platform where multiple users can edit code together, video call, and use a shared whiteboard. Uses synchronization techniques to handle concurrent edits without conflicts.
+      </p>
+      <div class="proj-tech">
+        <span class="tech-pill">React.js</span>
+        <span class="tech-pill">Node.js</span>
+        <span class="tech-pill">Socket.IO</span>
+        <span class="tech-pill">WebRTC</span>
+        <span class="tech-pill">MongoDB</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-10 mt-20">
-      <div class="flex justify-evenly">
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/cpp-5f0eef80-5f0eef80.png" style="width: 80px;" class="image-container" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">C++</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/html-150fbb08-150fbb08.png" style="width: 80px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">HTML</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/tailwind-c9b1b04e.png" style="width: 100px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">TAILWIND CSS</h4>
-        </div>
+    <div class="proj-card">
+      <div class="proj-icon">🤖</div>
+      <div>
+        <p class="proj-sub">AI-Powered Finance</p>
+        <h3 class="proj-title">WealthBot</h3>
       </div>
-
-      <div class="flex justify-evenly">
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/css-2925f7ac-2925f7ac.webp" style="width: 80px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">CSS</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/js-8737eb9c-8737eb9c.webp" style="width: 80px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">JAVASCRIPT</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/reactjs-5eee799a.png" style="width: 100px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">React.js</h4>
-        </div>
+      <p class="proj-desc">
+        An AI investment advisor that suggests strategies based on risk level, asset allocation, and market trends. Simulates investments and estimates potential returns using financial models and real-time data.
+      </p>
+      <div class="proj-tech">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">Data Analysis</span>
+        <span class="tech-pill">Financial APIs</span>
+        <span class="tech-pill">LLMs</span>
       </div>
-
-      <div class="flex justify-evenly">
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/java.png" style="width: 80px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">JAVA</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/terraform.svg" style="width: 80px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">TERRAFORM</h4>
-        </div>
-        <div class="text-black flex flex-col gap-5">
-          <img src="./assets/jenkins.png" style="width: 100px;" alt="">
-          <h4 style="font-family: 'Poppins', sans-serif;" class="justify-center font-normal mx-auto">JENKINS</h4>
-        </div>
+      <div class="proj-links">
+        <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
       </div>
-      
-    </div>
-  </div>
-
-  <div>
-    <div class="w-[70vw] h-0.5 bg-slate-500 rounded-sm mx-auto"></div>
-  </div>
-
-
-
-  <!-- Coding Profiles -->
-  <div class="flex flex-row w-full justify-center mt-20">
-    <img src="./assets/coding-e228c10c.png" class="coding-img w-[700px] h-[50vh] mt-28" alt="">
-    <div class="  static w-[80vw] lg:w-[50vw] h-[40vh] flex flex-col  mx-auto mt-20 gap-5 justify-around text-black coding-profiles">
-      <div class="flex flex-col gap-12 ">
-        <div class="text-2xl lg:text-7xl mx-auto">
-          <!-- <h1 style="font-family: 'Poppins', sans-serif;">Coding Profiles</h1> -->
-          <div class="waviy font-bold text-4xl lg:text-7xl">
-            <div class="flex flex-col lg:flex-row">
-              <div>
-                <span style="--i:1">C</span>
-                <span style="--i:2">o</span>
-                <span style="--i:3">d</span>
-                <span style="--i:4">i</span>
-                <span style="--i:5">n</span>
-                <span style="--i:6">g</span>
-              </div>
-              <div>
-                <span style="--i:8">P</span>
-                <span style="--i:8">r</span>
-                <span style="--i:8">o</span>
-                <span style="--i:8">f</span>
-                <span style="--i:8">i</span>
-                <span style="--i:8">l</span>
-                <span style="--i:8">e</span>
-                <span style="--i:8">s</span>
-              </div>
-              
-            </div>
-           </div>
-        </div>
-        <div class="w-[20vw] h-1 bg-[#26dcab] rounded-sm mx-auto"></div>
-      </div>
-      
-
-      <div class="flex flex-col gap-16 mt-24">
-        <div class="flex justify-around hover:cursor-pointer text-xl font-medium"  style="font-family: 'Montserrat', sans-serif;">
-          <div class="flex flex-row gap-2">
-            <img src="data:image/png;base64,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" class="width-[20px] h-10" alt="">
-            <a href="https://www.codechef.com/users/viraj2003" target="_blank" class="py-2">
-              <h2 class="hover:text-[#2686e7] hover:underline hover:text-2xl py-2">Codechef</h2>
-            </a>
-          </div>
-    
-          <div class="flex flex-row gap-3">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFC0lEQVR4nNWZbUxbVRjHD2aTcSEMynipt/fc0vbeW95aSoHyFjAEQrYZJU7FaUCzTENmTLaZzIkkzMT4QTONGmMobWmhZNpyaYF9MdkHTdQYPxg/uExeRkVeSgkJM4zIOtZjrgaDcF/quMDln/w/nuf8/s99zu3LAWCP1GBVw5JCYommDIimdLH6UvwGOCgqMx6jGUq7zjA02uwTleqrQOmy5Gca+OA5lxbhYaBkWQsy9UZKe58PnnOVGb8FlAzPiMBzZ6HRituAElVKZelE4WkDqjFnvwmUKIY8qqUN4vB1ZdmXgRKVp00jJeGt6neAEpWvS4dS8LWWnPeAEmXJE+88w1Cos013HSHwCDh4naeQ41IRWgzWoMhQZXTBb/GgLnAIKEFmSoUzFBkV7jyNPrtY+Df8ZkfY8jth1lS4r/Bl+Zk5Rloc/tMLBdvg/3WgMrrEllTsC3xhblY2YyDvicF/fH5757eHqLg/5zPVKA7+k/PczFejSKAqJhUiwlZEl/0my57AUxoVzhhExoamUHtz7i9hX379xpqZgTyKO7iRoaoHgiGGKu4t+C2mfYXn3vMtjXiP0Pqw32rjQIVD2NbmfcX5uwKv02VniY0N96p8rkHTK1WH6/Iia1sTHKkh25+LrFUtO7yRhmti8C80Ed54680NWo0RDlQgxAJb8o288JQ4/EsnNF/837rcuYiwtlX+Q106Kwu8wZCSyVDiY3P2Seh72PrzXgu5OFS+si2A3xKQgz8hj4Z/iMG3N8Mdb7Q0asYX2PLwpu7/hrqt2I7pK0zq62Lw557WjgIZteCzVEa85mJZiqlUqlSa1seE4C88m/sVULKqzY8FReCV/19OHk3e5QvQ/Dh5GxwAJVCUgecrgh65OyhcanEwGMwfDQa+HRkORkeHg0g2BwOro8FAkGXZLFEAtTrDyNf9KgtckYJHCCWMBgO3ZAUf/q9HhgN+UYiMjIx6rZZEW328Gp+TCjA4MECxfh/aTQ/6fXdFITDscHFi4qNoq0+WpyxLBfD19KicPXbksHfvmnudjjUpjsOpKYnbAhRosVg8P8j7Pe6R3YJ39tiR19sn/ZcMpUmK8j2Ftoa0QcnFAIBrXm+Lt8/t9no9/bLZ4+nx+Tx18ewPqguSf+ILQOYcQe++fOwMULqMELPyjdHGKH1wJq0VKF21ppRJvgCcGZiErrRmKDuELhtkGfCkB0IhuCdxpTW9RY69JuyEc9oNV6fdcGXCAT8CcqmyILUpW8U/ShshOl9UPbOTPSadxHdhL4k2e8xBdsgWoliPtWWmHxEOkYvFuk5nND9M7SkH/HErPOcpJxECcsqqx86KhtBiscun0p6Itx73eTLpIH7mgw//E0D+a6cyCntFKsQbp9KPS8J3gUNTLuKmEPx8P4nGuvGTYDdk1mOvZqYJhyjKxWKXTqc3icGHXHBMFN5JvA12U1YmqV3sSZj1WOzr94mLW9eNO0hLyAUXROHtsBPshWzGlHNiIXwdajTjgWshJzE95dJMTvcSd8L9/OBhzv0kmnAQe3vtVG5Mfk0ohO+tHGHYrZ33kmjcDvfn2qmCSX59awitOgmFXDBu+EkX/BDspxpLU58vY5LX01MTUZ0pBX1/FY8LftZDxsbtuDLuiW93645OOuAPc31kLB74UC/8fcyhqQVK083PcWrcofky5IJzMx4iOtsHY9zbZcYN16fdxPKEk7jxq514Su6N/wLrjQ0wbbQFOwAAAABJRU5ErkJggg==" class="width-[20px] h-8" alt="">
-            <a href="https://leetcode.com/viraj2003/" target="_blank" class="py-2">
-              <h2 class="hover:text-[#2686e7] hover:underline hover:text-2xl">Leetcode</h2>
-            </a>
-          </div>
-    
-    
-        </div>
-        <div class="flex justify-around hover:cursor-pointer text-xl font-medium" style="font-family: 'Montserrat', sans-serif;">
-          <div class="flex gap-2">
-            <div class="flex flex-row gap-3 ">
-              <img src="data:image/png;base64,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" class="width-[20px] h-12" alt="">
-              <a href="https://auth.geeksforgeeks.org/user/virajtakone304/practice" target="_blank">
-                <h2 class="hover:text-[#2686e7] hover:underline hover:text-2xl py-3">GeeksForGeeks</h2>
-              </a>
-            </div>
-    
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
- 
-
-
-
-
-  <!-- Contact Me -->
-  <section class="bg-[#80c2ff] mt-40" id="Contact">
-    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-      <h2 class="mb-4 text-5xl lg:text-7xl tracking-tight font-extrabold text-center text-gray-900 ">Contact Me</h2>
-      <!-- <div class="waviy font-bold text-7xl mb-10 text-center">
-        <span style="--i:1">C</span>
-        <span style="--i:2">o</span>
-        <span style="--i:3">n</span>
-        <span style="--i:4">t</span>
-        <span style="--i:5">a</span>
-        <span style="--i:6">c</span>
-        <span style="--i:7">t</span>
-        <span style="--i:8">M</span>
-        <span style="--i:8">e</span>
-        
-       </div> -->
-      <p class="mb-8 lg:mb-16 font-light text-center text-black sm:text-xl">Will Be Happy to help you,
-        Feel free to Contact Me</p>
-      <form action="#" class="space-y-8">
-        <div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
-          <input type="email" id="email"
-            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-            placeholder="mail@gmail.com" required>
-        </div>
-        <div>
-          <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 ">Subject</label>
-          <input type="text" id="subject"
-            class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500  dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-            placeholder="Let us know how I can help you" required>
-        </div>
-        <div class="sm:col-span-2">
-          <label for="message" class="block mb-2 text-sm font-medium text-gray-900 ">Your
-            message</label>
-          <textarea id="message" rows="6"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="Leave a comment..."></textarea>
-        </div>
-        <button type="submit" class=" custom-button2 rounded">Send message</button>
-      </form>
-    </div>
-  </section>
-
-
-
-
-  <!-- Lower Nav -->
-  <div class="w-full h-[10vh] md:h-[5vh] bg-[#267ed6] flex flex-col md:flex-row justify-around py-3 relative">
-   
-    <div class="flex gap-5 text-xs md:text-base space-x-4" style="font-family: 'Poppins', sans-serif;">
-      <h2 class="space-x-4"><i class="fa-solid fa-phone" style="color: #000000;"></i> +91-7420098224</h2>
-      <h2><i class="fa-solid fa-envelope" style="color: #000000;"></i> virajtakone304@gmail.com</h2>
     </div>
 
-    <div class="flex">
-      <h1>Made By <span class="font-extrabold">@Viraj</span></h1>
-    </div>
-
-    <div class="w-[5vw] absolute top-0 right-0  h-[5vh] flex justify-center">
-
+    <div class="proj-card">
+      <div class="proj-icon">☁️</div>
+      <div>
+        <p class="proj-sub">DevOps & Infrastructure</p>
+        <h3 class="proj-title">DevOps CI/CD Pipeline</h3>
+      </div>
+      <p class="proj-desc">
+        Automated DevOps infrastructure on AWS with a comprehensive CI/CD pipeline using open-source tools. Configured Terraform for infrastructure provisioning and Jenkins for automated build and deployment.
+      </p>
+      <div class="proj-tech">
+        <span class="tech-pill">AWS</span>
+        <span class="tech-pill">Terraform</span>
+        <span class="tech-pill">Jenkins</span>
+        <span class="tech-pill">CI/CD</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
+      </div>
     </div>
 
   </div>
+</section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">03 / Skills</p>
+  <h2 class="section-title">Tech Stack</h2>
+  <div class="section-line"></div>
 
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-group-title">Languages</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C++</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Frontend</p>
+      <div class="skill-tags">
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Backend</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express.js</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">AI / ML</p>
+      <div class="skill-tags">
+        <span class="skill-tag">LLMs</span>
+        <span class="skill-tag">RAG</span>
+        <span class="skill-tag">Vector DBs</span>
+        <span class="skill-tag">MCP</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Tools & DevOps</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">Terraform</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Databases</p>
+      <div class="skill-tags">
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Vector DB</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <p class="section-label">04 / Achievements</p>
+  <h2 class="section-title">Highlights</h2>
+  <div class="section-line"></div>
 
-<!-- Nav Button -->
-<button onclick="topFunction()" id="myBtn" title="Go to top"><a href="#Nav"><i class="fa-regular fa-circle-up fa-bounce text-5xl mt-2 hover:text-blue-500" class="nav-top"></i></a></button>
-  
-<script src="./assets/script.js"></script>
+  <div class="ach-list">
+    <div class="ach-item">
+      <span class="ach-num">22<sup style="font-size:0.6em">nd</sup></span>
+      <p class="ach-text">Ranked 22nd out of 400 participants in GFG Online Competition (GPAT)</p>
+    </div>
+    <div class="ach-item">
+      <span class="ach-num">4<sup style="font-size:0.6em">th</sup></span>
+      <p class="ach-text">4th Rank in CODECRUSH competition organized by SAIT</p>
+    </div>
+    <div class="ach-item">
+      <span class="ach-num">5%</span>
+      <p class="ach-text">Top 5% student at college — awarded TFWS Scholarship for exceptional academic performance</p>
+    </div>
+    <div class="ach-item">
+      <span class="ach-num">🥈</span>
+      <p class="ach-text">2nd Position & Silver Medal at Abacus Competition, Nagpur — 100+ participants</p>
+    </div>
+    <div class="ach-item">
+      <span class="ach-num">🏏</span>
+      <p class="ach-text">District-level cricket team captain — led team to runner-up in district tournament with 10+ teams</p>
+    </div>
+  </div>
+</section>
+
+<!-- CODING PROFILES -->
+<section id="profiles" style="padding-top:0;">
+  <p class="section-label">05 / Profiles</p>
+  <h2 class="section-title">Coding Platforms</h2>
+  <div class="section-line"></div>
+
+  <div class="profiles-row">
+    <a class="profile-link" href="https://leetcode.com/viraj2003/" target="_blank">
+      <div class="dot" style="background:#ffa116;"></div>
+      <div>
+        <div>LeetCode</div>
+        <span>viraj2003</span>
+      </div>
+    </a>
+    <a class="profile-link" href="https://www.codechef.com/users/viraj2003" target="_blank">
+      <div class="dot" style="background:#5b4638;"></div>
+      <div>
+        <div>CodeChef</div>
+        <span>viraj2003</span>
+      </div>
+    </a>
+    <a class="profile-link" href="https://auth.geeksforgeeks.org/user/virajtakone304/practice" target="_blank">
+      <div class="dot" style="background:#2f8d46;"></div>
+      <div>
+        <div>GeeksForGeeks</div>
+        <span>virajtakone304</span>
+      </div>
+    </a>
+    <a class="profile-link" href="https://github.com/viru04" target="_blank">
+      <div class="dot" style="background:#e8eaf0;"></div>
+      <div>
+        <div>GitHub</div>
+        <span>viru04</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">06 / Contact</p>
+    <h2 class="section-title">Let's Talk</h2>
+    <div class="section-line"></div>
+
+    <p class="contact-desc">
+      Whether it's a project idea, a job opportunity, or just a hello — my inbox is always open.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <a class="contact-info" href="mailto:virajtakone304@gmail.com" style="color:var(--accent);text-decoration:none;">virajtakone304@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <span class="contact-info">+91-7420098224</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a class="btn-primary" href="mailto:virajtakone304@gmail.com">Send Email ↗</a>
+      <a class="btn-outline" href="https://github.com/viru04" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Viraj Takone</span>
+  <span>Built with love by viraj</span>
+</footer>
+
+<script>
+  // ── THEME TOGGLE ──
+  const html = document.documentElement;
+  const icon = document.getElementById('themeIcon');
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      html.classList.add('light');
+      icon.textContent = '☀️';
+    } else {
+      html.classList.remove('light');
+      icon.textContent = '🌙';
+    }
+    localStorage.setItem('vt-theme', theme);
+  }
+
+  function toggleTheme() {
+    applyTheme(html.classList.contains('light') ? 'dark' : 'light');
+  }
+
+  // Load saved preference
+  applyTheme(localStorage.getItem('vt-theme') || 'dark');
+
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+  }
+
+  // Scroll-triggered fade-in for sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-card, .proj-card, .skill-group, .ach-item, .profile-link').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
-
 </html>
