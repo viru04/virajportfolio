@@ -21,8 +21,8 @@
     applyTheme(html.classList.contains('light') ? 'dark' : 'light');
   };
 
-  let savedTheme = 'dark';
-  try { savedTheme = localStorage.getItem('vt-theme') || 'dark'; } catch (e) {}
+  let savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('vt-theme') || 'light'; } catch (e) {}
   applyTheme(savedTheme);
 
   // ── MOBILE MENU ──
