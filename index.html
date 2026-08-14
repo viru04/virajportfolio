@@ -1,474 +1,503 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Viraj Takone — Full Stack Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,600,700,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="pre-lock">
 
-<!-- Preloader -->
-<div id="preloader">
-  <p class="pre-mark">VT<span>.</span></p>
-  <div class="pre-bar"></div>
-</div>
-
-<!-- Custom cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Scroll progress -->
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- Ambient animated mesh background -->
-<div class="mesh-bg">
-  <span class="mesh-1" data-parallax="0.15"></span>
-  <span class="mesh-2" data-parallax="0.25"></span>
-  <span class="mesh-3" data-parallax="0.35"></span>
-</div>
-
-<!-- Cursor-following glow (desktop) -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#hero">VT<span>.</span></a>
-
-  <ul class="nav-links">
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-
-  <a class="nav-cta magnetic" href="./assets/resume.pdf" target="_blank">Resume</a>
-
-  <div style="display:flex;align-items:center;gap:0.75rem;">
-    <span class="theme-icon" id="themeIcon" onclick="toggleTheme()" title="Toggle theme">🌙</span>
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
+  <!-- Preloader -->
+  <div id="preloader">
+    <p class="pre-mark">VT<span>.</span></p>
+    <div class="pre-bar"></div>
   </div>
 
-  <div class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Ambient animated mesh background -->
+  <div class="mesh-bg">
+    <span class="mesh-1" data-parallax="0.15"></span>
+    <span class="mesh-2" data-parallax="0.25"></span>
+    <span class="mesh-3" data-parallax="0.35"></span>
   </div>
-</nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#education" onclick="toggleMenu()">Education</a>
-  <a href="#experience" onclick="toggleMenu()">Experience</a>
-  <a href="#projects" onclick="toggleMenu()">Projects</a>
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="./assets/resume.pdf" target="_blank" style="color:var(--accent);">Resume</a>
-</div>
+  <!-- Cursor-following glow (desktop) -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-layout">
-    <div class="hero-inner">
-      <p class="hero-tag fade-up"><span class="pulse-dot"></span> Available for opportunities</p>
-      <h1 class="hero-name fade-up">Viraj<br><span class="grad-text">Takone</span></h1>
-      <p class="hero-role fade-up" id="typedRole">Full Stack Developer</p>
-      <p class="hero-desc fade-up">
-        I build scalable web applications end-to-end — clean APIs, sharp UIs, and everything in between.
-        Currently working at <strong style="color:var(--text);">UBS Business Solutions</strong>, Pune.
-      </p>
-      <div class="hero-actions fade-up">
-        <a class="btn-primary magnetic" href="#projects">View Projects ↓</a>
-        <a class="btn-outline magnetic" href="mailto:virajtakone304@gmail.com">Get in Touch</a>
-      </div>
-    </div>
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">VT<span>.</span></a>
 
-    <div class="hero-photo-wrap fade-up" data-parallax="0.12" id="heroPhotoWrap">
-      <div class="hero-photo-ring">
-        <!-- PHOTO: replace the div below with <img src="your-photo.jpg" alt="Viraj Takone"> once you upload your picture -->
-        <div class="hero-photo-placeholder"><img src="./assets/Profile-pic.jpg" alt="Viraj Takone"></div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span class="scroll-line"></span>
-    scroll
-  </div>
-</section>
-
-<!-- TECH TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Java</span><span>TypeScript</span><span>React.js</span><span>Spring Boot</span><span>Node.js</span><span>FastAPI</span><span>FastMCP</span><span>MCP</span><span>LLMs / RAG</span><span>GitLab CI/CD</span><span>Docker</span><span>Terraform</span>
-    <!-- duplicate for seamless loop -->
-    <span>Java</span><span>TypeScript</span><span>React.js</span><span>Spring Boot</span><span>Node.js</span><span>FastAPI</span><span>FastMCP</span><span>MCP</span><span>LLMs / RAG</span><span>GitLab CI/CD</span><span>Docker</span><span>Terraform</span>
-  </div>
-</div>
-
-<!-- EDUCATION -->
-<section id="education">
-  <p class="section-label">01 / Education</p>
-  <h2 class="section-title">Academic Background</h2>
-  <div class="section-line"></div>
-
-  <div class="edu-card">
-    <div class="edu-top">
-      <h3 class="edu-school">Walchand College of Engineering</h3>
-      <span class="edu-period">July 2021 – July 2025</span>
-    </div>
-    <p class="edu-degree">B.Tech in Information Technology — Sangli, India · CGPA: <strong>8.31 / 10.0</strong></p>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label">02 / Experience</p>
-  <h2 class="section-title">Where I've Worked</h2>
-  <div class="section-line"></div>
-
-  <div class="exp-card">
-    <div class="exp-top">
-      <h3 class="exp-company">UBS Business Solutions</h3>
-      <span class="exp-period">Aug 2025 – Present</span>
-    </div>
-    <span class="exp-role-alt">Software Developer — Pune, India</span>
-    <ul class="exp-bullets">
-      <li><strong>Full Stack Development:</strong> Developed production banking features using React.js, TypeScript, SCSS, Java, and Spring Boot, integrating responsive UIs with RESTful backend services</li>
-      <li><strong>Backend &amp; Testing:</strong> Built and optimized REST APIs and database queries, and implemented unit/integration tests using JUnit, Mockito, Vitest, and Jest to improve reliability and reduce regressions</li>
-      <li><strong>AI-Assisted Tooling:</strong> Architected internal AI developer tooling as part of "Intelligent Scripting," provisioning role-based AI agents, skills, and instruction sets to improve employee productivity</li>
-      <li><strong>Collaboration &amp; Engagement:</strong> Actively participated in Scrum ceremonies and cross-functional discussions while engaging in employee forums and cultural initiatives</li>
+    <ul class="nav-links">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+
+    <a class="nav-cta magnetic" href="./assets/resume.pdf" target="_blank">Resume</a>
+
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <span class="theme-icon" id="themeIcon" onclick="toggleTheme()" title="Toggle theme">☀️</span>
+      <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
+    </div>
+
+    <div class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#education" onclick="toggleMenu()">Education</a>
+    <a href="#experience" onclick="toggleMenu()">Experience</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="./assets/resume.pdf" target="_blank" style="color:var(--accent);">Resume</a>
   </div>
-</section>
 
-<!-- KINETIC BANNER -->
-<div class="kinetic-banner" aria-hidden="true">
-  <div class="kinetic-track" id="kineticTrack1">
-    <span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span><span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span>
-    <span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span><span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span>
-  </div>
-</div>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-layout">
+      <div class="hero-inner">
+        <p class="hero-tag fade-up"><span class="pulse-dot"></span> Available for opportunities</p>
+        <h1 class="hero-name fade-up">Viraj<br><span class="grad-text">Takone</span></h1>
+        <p class="hero-role fade-up" id="typedRole">Full Stack Developer</p>
+        <p class="hero-desc fade-up">
+          I build scalable web applications end-to-end — clean APIs, sharp UIs, and everything in between.
+          Currently working at <strong style="color:var(--text);">UBS Business Solutions</strong>, Pune.
+        </p>
+        <div class="hero-actions fade-up">
+          <a class="btn-primary magnetic" href="#projects">View Projects ↓</a>
+          <a class="btn-outline magnetic" href="mailto:virajtakone304@gmail.com">Get in Touch</a>
+        </div>
+      </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label">03 / Projects</p>
-  <h2 class="section-title">Things I've Built</h2>
-  <div class="section-line"></div>
+      <div class="hero-photo-wrap fade-up" data-parallax="0.12" id="heroPhotoWrap">
+        <div class="hero-photo-ring">
+          <!-- PHOTO: replace the div below with <img src="your-photo.jpg" alt="Viraj Takone"> once you upload your picture -->
+          <div class="hero-photo-placeholder"><img src="./assets/Profile-pic.jpg" alt="Viraj Takone"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      scroll
+    </div>
+  </section>
 
-  <div class="projects-grid">
-
-    <div class="proj-card">
-      <span class="proj-badge">New</span>
-      <div class="proj-icon">🛠️</div>
-      <div>
-        <p class="proj-sub">Security & DevSecOps</p>
-        <h3 class="proj-title">RemediFlow</h3>
-      </div>
-      <p class="proj-desc">
-        An automated vulnerability remediation platform integrating NexusIQ, SonarQube, and Fortify to detect and fix vulnerabilities across GitLab projects. A Python-based auto-remediation engine parses dependency reports from pom.xml / package.json and regenerates files with resolved, user-selectable versions, then opens merge requests via the GitLab API/MCP for human-in-the-loop review.
-      </p>
-      <div class="proj-tech">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">GitLab API</span>
-        <span class="tech-pill">GitLab MCP</span>
-        <span class="tech-pill">NexusIQ</span>
-        <span class="tech-pill">SonarQube</span>
-        <span class="tech-pill">Fortify</span>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-icon">💻</div>
-      <div>
-        <p class="proj-sub">Real-time Collaboration</p>
-        <h3 class="proj-title">CodeWithMe</h3>
-      </div>
-      <p class="proj-desc">
-        A real-time collaborative coding platform where multiple users can edit code together, video call, and use a shared whiteboard. Uses synchronization techniques to handle concurrent edits without conflicts.
-      </p>
-      <div class="proj-tech">
-        <span class="tech-pill">React.js</span>
-        <span class="tech-pill">Node.js</span>
-        <span class="tech-pill">Socket.IO</span>
-        <span class="tech-pill">WebRTC</span>
-        <span class="tech-pill">MongoDB</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/viru04/Codewithme" target="_blank">↗ GitHub</a>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-icon">🤖</div>
-      <div>
-        <p class="proj-sub">AI-Powered Finance</p>
-        <h3 class="proj-title">WealthBot</h3>
-      </div>
-      <p class="proj-desc">
-        An AI investment advisor that suggests strategies based on risk level, asset allocation, and market trends. Simulates investments and estimates potential returns using financial models and real-time data.
-      </p>
-      <div class="proj-tech">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">Data Analysis</span>
-        <span class="tech-pill">Financial APIs</span>
-        <span class="tech-pill">LLMs</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-icon">☁️</div>
-      <div>
-        <p class="proj-sub">DevOps & Infrastructure</p>
-        <h3 class="proj-title">DevOps CI/CD Pipeline</h3>
-      </div>
-      <p class="proj-desc">
-        Automated DevOps infrastructure on AWS with a comprehensive CI/CD pipeline using open-source tools. Configured Terraform for infrastructure provisioning and Jenkins for automated build and deployment.
-      </p>
-      <div class="proj-tech">
-        <span class="tech-pill">AWS</span>
-        <span class="tech-pill">Terraform</span>
-        <span class="tech-pill">Jenkins</span>
-        <span class="tech-pill">CI/CD</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">04 / Skills</p>
-  <h2 class="section-title">Tech Stack</h2>
-  <div class="section-line"></div>
-
-  <div class="skills-grid">
-    <div class="skill-group">
-      <p class="skill-group-title">Languages</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Frontend</p>
-      <div class="skill-tags">
-        <span class="skill-tag">React.js</span>
-        <span class="skill-tag">HTML</span>
-        <span class="skill-tag">CSS</span>
-        <span class="skill-tag">SCSS</span>
-        <span class="skill-tag">ES6</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">Figma</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Backend</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Spring Boot</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express.js</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">FastMCP</span>
-        <span class="skill-tag">REST APIs</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Testing</p>
-      <div class="skill-tags">
-        <span class="skill-tag">JUnit</span>
-        <span class="skill-tag">Mockito</span>
-        <span class="skill-tag">Vitest</span>
-        <span class="skill-tag">Jest</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">AI / ML</p>
-      <div class="skill-tags">
-        <span class="skill-tag">LLMs</span>
-        <span class="skill-tag">RAG</span>
-        <span class="skill-tag">Vector DBs</span>
-        <span class="skill-tag">MCP</span>
-        <span class="skill-tag">AI Agent/Skill Customization</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Tools & DevOps</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">GitLab</span>
-        <span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Jenkins</span>
-        <span class="skill-tag">Terraform</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Databases</p>
-      <div class="skill-tags">
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Vector DB</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Fundamentals</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Data Structures & Algorithms</span>
-        <span class="skill-tag">Operating Systems</span>
-        <span class="skill-tag">DBMS</span>
-      </div>
+  <!-- TECH TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Java</span><span>TypeScript</span><span>React.js</span><span>Spring
+        Boot</span><span>Node.js</span><span>FastAPI</span><span>FastMCP</span><span>MCP</span><span>LLMs /
+        RAG</span><span>GitLab CI/CD</span><span>Docker</span><span>Terraform</span>
+      <!-- duplicate for seamless loop -->
+      <span>Java</span><span>TypeScript</span><span>React.js</span><span>Spring
+        Boot</span><span>Node.js</span><span>FastAPI</span><span>FastMCP</span><span>MCP</span><span>LLMs /
+        RAG</span><span>GitLab CI/CD</span><span>Docker</span><span>Terraform</span>
     </div>
   </div>
-</section>
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <p class="section-label">05 / Achievements</p>
-  <h2 class="section-title">Highlights</h2>
-  <div class="section-line"></div>
-
-  <div class="ach-list">
-    <div class="ach-item">
-      <span class="ach-num" data-count="22"><span class="count-val">0</span><sup style="font-size:0.6em">nd</sup></span>
-      <p class="ach-text">Ranked 22nd out of 400 participants in GFG Online Competition (GPAT)</p>
-    </div>
-    <div class="ach-item">
-      <span class="ach-num" data-count="4"><span class="count-val">0</span><sup style="font-size:0.6em">th</sup></span>
-      <p class="ach-text">4th Rank in CODECRUSH competition organized by SAIT</p>
-    </div>
-    <div class="ach-item">
-      <span class="ach-num" data-count="5"><span class="count-val">0</span>%</span>
-      <p class="ach-text">Top 5% student at college — awarded TFWS Scholarship for exceptional academic performance</p>
-    </div>
-    <div class="ach-item">
-      <span class="ach-num">🥈</span>
-      <p class="ach-text">2nd Position & Silver Medal at Abacus Competition, Nagpur — 100+ participants</p>
-    </div>
-    <div class="ach-item">
-      <span class="ach-num">🏏</span>
-      <p class="ach-text">District-level cricket team captain — led team to runner-up in district tournament with 10+ teams</p>
-    </div>
-  </div>
-</section>
-
-<!-- CODING PROFILES -->
-<section id="profiles" style="padding-top:0;">
-  <p class="section-label">06 / Profiles</p>
-  <h2 class="section-title">Coding Platforms</h2>
-  <div class="section-line"></div>
-
-  <div class="profiles-row">
-    <a class="profile-link" href="https://leetcode.com/viraj2003/" target="_blank">
-      <div class="dot" style="background:#ffa116;"></div>
-      <div>
-        <div>LeetCode</div>
-        <span>viraj2003</span>
-      </div>
-    </a>
-    <a class="profile-link" href="https://www.codechef.com/users/viraj2003" target="_blank">
-      <div class="dot" style="background:#5b4638;"></div>
-      <div>
-        <div>CodeChef</div>
-        <span>viraj2003</span>
-      </div>
-    </a>
-    <a class="profile-link" href="https://codeforces.com/profile/viru04" target="_blank">
-      <div class="dot" style="background:#1f8acb;"></div>
-      <div>
-        <div>Codeforces</div>
-        <span>viru04</span>
-      </div>
-    </a>
-    <a class="profile-link" href="https://auth.geeksforgeeks.org/user/virajtakone304/practice" target="_blank">
-      <div class="dot" style="background:#2f8d46;"></div>
-      <div>
-        <div>GeeksForGeeks</div>
-        <span>virajtakone304</span>
-      </div>
-    </a>
-    <a class="profile-link" href="https://github.com/viru04" target="_blank">
-      <div class="dot" style="background:#e8eaf0;"></div>
-      <div>
-        <div>GitHub</div>
-        <span>viru04</span>
-      </div>
-    </a>
-    <a class="profile-link" href="https://linkedin.com/in/virajtakone" target="_blank">
-      <div class="dot" style="background:#0a66c2;"></div>
-      <div>
-        <div>LinkedIn</div>
-        <span>virajtakone</span>
-      </div>
-    </a>
-    <a class="profile-link" href="http://virajtportfolio.netlify.app" target="_blank">
-      <div class="dot" style="background:var(--accent2);"></div>
-      <div>
-        <div>Portfolio</div>
-        <span>virajtportfolio.netlify.app</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- KINETIC BANNER -->
-<div class="kinetic-banner" aria-hidden="true">
-  <div class="kinetic-track" id="kineticTrack2">
-    <span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span>
-    <span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <p class="section-label">07 / Contact</p>
-    <h2 class="section-title">Let's Talk</h2>
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">01 / Education</p>
+    <h2 class="section-title">Academic Background</h2>
     <div class="section-line"></div>
 
-    <p class="contact-desc">
-      Whether it's a project idea, a job opportunity, or just a hello — my inbox is always open.
-    </p>
-
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-icon">✉</div>
-        <a class="contact-info" href="mailto:virajtakone304@gmail.com" style="color:var(--accent);text-decoration:none;">virajtakone304@gmail.com</a>
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3 class="edu-school">Walchand College of Engineering</h3>
+        <span class="edu-period">July 2021 – July 2025</span>
       </div>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <span class="contact-info">+91-7420098224</span>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">💼</div>
-        <a class="contact-info" href="https://linkedin.com/in/virajtakone" target="_blank" style="color:var(--accent);text-decoration:none;">linkedin.com/in/virajtakone</a>
-      </div>
+      <p class="edu-degree">B.Tech in Information Technology — Sangli, India · CGPA: <strong>8.31 / 10.0</strong></p>
     </div>
+  </section>
 
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a class="btn-primary magnetic" href="mailto:virajtakone304@gmail.com">Send Email ↗</a>
-      <a class="btn-outline magnetic" href="https://github.com/viru04" target="_blank">GitHub ↗</a>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">02 / Experience</p>
+    <h2 class="section-title">Where I've Worked</h2>
+    <div class="section-line"></div>
+
+    <div class="exp-card">
+      <div class="exp-top">
+        <h3 class="exp-company">UBS Business Solutions</h3>
+        <span class="exp-period">Aug 2025 – Present</span>
+      </div>
+      <span class="exp-role-alt">Software Developer — Pune, India</span>
+      <ul class="exp-bullets">
+        <li><strong>Full Stack Development:</strong> Developed production banking features using React.js, TypeScript,
+          SCSS, Java, and Spring Boot, integrating responsive UIs with RESTful backend services</li>
+        <li><strong>Backend &amp; Testing:</strong> Built and optimized REST APIs and database queries, and implemented
+          unit/integration tests using JUnit, Mockito, Vitest, and Jest to improve reliability and reduce regressions
+        </li>
+        <li><strong>AI-Assisted Tooling:</strong> Architected internal AI developer tooling as part of "Intelligent
+          Scripting," provisioning role-based AI agents, skills, and instruction sets to improve employee productivity
+        </li>
+        <li><strong>Collaboration &amp; Engagement:</strong> Actively participated in Scrum ceremonies and
+          cross-functional discussions while engaging in employee forums and cultural initiatives</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- KINETIC BANNER -->
+  <div class="kinetic-banner" aria-hidden="true">
+    <div class="kinetic-track" id="kineticTrack1">
+      <span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span><span>PROJECT WORK</span><span
+        class="grad-fill">PROJECT WORK</span>
+      <span>PROJECT WORK</span><span class="grad-fill">PROJECT WORK</span><span>PROJECT WORK</span><span
+        class="grad-fill">PROJECT WORK</span>
     </div>
   </div>
-</section>
 
-<footer>
-  <span>© 2025 Viraj Takone</span>
-  <a class="back-to-top" href="#hero">↑ Back to top</a>
-  <span>Built with love by viraj</span>
-</footer>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">03 / Projects</p>
+    <h2 class="section-title">Things I've Built</h2>
+    <div class="section-line"></div>
 
-<script src="script.js"></script>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-icon">✉️</div>
+        <div>
+          <p class="proj-sub">AI-Powered Email Assistant</p>
+          <h3 class="proj-title">SmartEmailAssistant</h3>
+        </div>
+        <p class="proj-desc">
+          An AI-powered browser extension that generates smart email replies using the Gemini API.
+          Integrates a Spring Boot backend service with a browser extension that adds an
+          AI Reply button directly to email responses, enabling users to generate contextual
+          replies with a single click.
+        </p>
+        <div class="proj-tech">
+          <span class="tech-pill">Java</span>
+          <span class="tech-pill">Spring Boot</span>
+          <span class="tech-pill">Spring AI</span>
+          <span class="tech-pill">Gemini API</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Browser Extension</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">💻</div>
+        <div>
+          <p class="proj-sub">Real-time Collaboration</p>
+          <h3 class="proj-title">CodeWithMe</h3>
+        </div>
+        <p class="proj-desc">
+          A real-time collaborative coding platform where multiple users can edit code together, video call, and use a
+          shared whiteboard. Uses synchronization techniques to handle concurrent edits without conflicts.
+        </p>
+        <div class="proj-tech">
+          <span class="tech-pill">React.js</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Socket.IO</span>
+          <span class="tech-pill">WebRTC</span>
+          <span class="tech-pill">MongoDB</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/viru04/Codewithme" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">🤖</div>
+        <div>
+          <p class="proj-sub">AI-Powered Finance</p>
+          <h3 class="proj-title">WealthBot</h3>
+        </div>
+        <p class="proj-desc">
+          An AI investment advisor that suggests strategies based on risk level, asset allocation, and market trends.
+          Simulates investments and estimates potential returns using financial models and real-time data.
+        </p>
+        <div class="proj-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Data Analysis</span>
+          <span class="tech-pill">Financial APIs</span>
+          <span class="tech-pill">LLMs</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">☁️</div>
+        <div>
+          <p class="proj-sub">DevOps & Infrastructure</p>
+          <h3 class="proj-title">DevOps CI/CD Pipeline</h3>
+        </div>
+        <p class="proj-desc">
+          Automated DevOps infrastructure on AWS with a comprehensive CI/CD pipeline using open-source tools. Configured
+          Terraform for infrastructure provisioning and Jenkins for automated build and deployment.
+        </p>
+        <div class="proj-tech">
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">Terraform</span>
+          <span class="tech-pill">Jenkins</span>
+          <span class="tech-pill">CI/CD</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/viru04" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">04 / Skills</p>
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="section-line"></div>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Languages</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Frontend</p>
+        <div class="skill-tags">
+          <span class="skill-tag">React.js</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">SCSS</span>
+          <span class="skill-tag">ES6</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Backend</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express.js</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">FastMCP</span>
+          <span class="skill-tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Testing</p>
+        <div class="skill-tags">
+          <span class="skill-tag">JUnit</span>
+          <span class="skill-tag">Mockito</span>
+          <span class="skill-tag">Vitest</span>
+          <span class="skill-tag">Jest</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">AI / ML</p>
+        <div class="skill-tags">
+          <span class="skill-tag">LLMs</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">Vector DBs</span>
+          <span class="skill-tag">MCP</span>
+          <span class="skill-tag">AI Agent/Skill Customization</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Tools & DevOps</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitLab</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Terraform</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Databases</p>
+        <div class="skill-tags">
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Vector DB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Fundamentals</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Structures & Algorithms</span>
+          <span class="skill-tag">Operating Systems</span>
+          <span class="skill-tag">DBMS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <p class="section-label">05 / Achievements</p>
+    <h2 class="section-title">Highlights</h2>
+    <div class="section-line"></div>
+
+    <div class="ach-list">
+      <div class="ach-item">
+        <span class="ach-num" data-count="22"><span class="count-val">0</span><sup
+            style="font-size:0.6em">nd</sup></span>
+        <p class="ach-text">Ranked 22nd out of 400 participants in GFG Online Competition (GPAT)</p>
+      </div>
+      <div class="ach-item">
+        <span class="ach-num" data-count="4"><span class="count-val">0</span><sup
+            style="font-size:0.6em">th</sup></span>
+        <p class="ach-text">4th Rank in CODECRUSH competition organized by SAIT</p>
+      </div>
+      <div class="ach-item">
+        <span class="ach-num" data-count="5"><span class="count-val">0</span>%</span>
+        <p class="ach-text">Top 5% student at college — awarded TFWS Scholarship for exceptional academic performance
+        </p>
+      </div>
+      <div class="ach-item">
+        <span class="ach-num">🥈</span>
+        <p class="ach-text">2nd Position & Silver Medal at Abacus Competition, Nagpur — 100+ participants</p>
+      </div>
+      <div class="ach-item">
+        <span class="ach-num">🏏</span>
+        <p class="ach-text">District-level cricket team captain — led team to runner-up in district tournament with 10+
+          teams</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODING PROFILES -->
+  <section id="profiles" style="padding-top:0;">
+    <p class="section-label">06 / Profiles</p>
+    <h2 class="section-title">Coding Platforms</h2>
+    <div class="section-line"></div>
+
+    <div class="profiles-row">
+      <a class="profile-link" href="https://leetcode.com/viraj2003/" target="_blank">
+        <div class="dot" style="background:#ffa116;"></div>
+        <div>
+          <div>LeetCode</div>
+          <span>viraj2003</span>
+        </div>
+      </a>
+      <a class="profile-link" href="https://www.codechef.com/users/viraj2003" target="_blank">
+        <div class="dot" style="background:#5b4638;"></div>
+        <div>
+          <div>CodeChef</div>
+          <span>viraj2003</span>
+        </div>
+      </a>
+      <a class="profile-link" href="https://codeforces.com/profile/viru04" target="_blank">
+        <div class="dot" style="background:#1f8acb;"></div>
+        <div>
+          <div>Codeforces</div>
+          <span>viru04</span>
+        </div>
+      </a>
+      <a class="profile-link" href="https://auth.geeksforgeeks.org/user/virajtakone304/practice" target="_blank">
+        <div class="dot" style="background:#2f8d46;"></div>
+        <div>
+          <div>GeeksForGeeks</div>
+          <span>virajtakone304</span>
+        </div>
+      </a>
+      <a class="profile-link" href="https://github.com/viru04" target="_blank">
+        <div class="dot" style="background:#e8eaf0;"></div>
+        <div>
+          <div>GitHub</div>
+          <span>viru04</span>
+        </div>
+      </a>
+      <a class="profile-link" href="https://linkedin.com/in/virajtakone" target="_blank">
+        <div class="dot" style="background:#0a66c2;"></div>
+        <div>
+          <div>LinkedIn</div>
+          <span>virajtakone</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- KINETIC BANNER -->
+  <div class="kinetic-banner" aria-hidden="true">
+    <div class="kinetic-track" id="kineticTrack2">
+      <span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span><span>LET'S BUILD
+        SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span>
+      <span>LET'S BUILD SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span><span>LET'S BUILD
+        SOMETHING</span><span class="grad-fill">LET'S BUILD SOMETHING</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">07 / Contact</p>
+      <h2 class="section-title">Let's Talk</h2>
+      <div class="section-line"></div>
+
+      <p class="contact-desc">
+        Whether it's a project idea, a job opportunity, or just a hello — my inbox is always open.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <a class="contact-info" href="mailto:virajtakone304@gmail.com"
+            style="color:var(--accent);text-decoration:none;">virajtakone304@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <span class="contact-info">+91-7420098224</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <a class="contact-info" href="https://linkedin.com/in/virajtakone" target="_blank"
+            style="color:var(--accent);text-decoration:none;">linkedin.com/in/virajtakone</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a class="btn-primary magnetic" href="mailto:virajtakone304@gmail.com">Send Email ↗</a>
+        <a class="btn-outline magnetic" href="https://github.com/viru04" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Viraj Takone</span>
+    <a class="back-to-top" href="#hero">↑ Back to top</a>
+    <span>Built with love by viraj</span>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

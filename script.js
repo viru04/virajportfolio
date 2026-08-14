@@ -25,6 +25,99 @@
   try { savedTheme = localStorage.getItem('vt-theme') || 'light'; } catch (e) {}
   applyTheme(savedTheme);
 
+  // ── TECH LOGOS FOR SKILL TAGS & TECH PILLS ──
+  const ICON_MAP = {
+    'java': 'devicon-java-plain colored',
+    'javascript': 'devicon-javascript-plain colored',
+    'typescript': 'devicon-typescript-plain colored',
+    'python': 'devicon-python-plain colored',
+    'c++': 'devicon-cplusplus-plain colored',
+    'sql': 'fa-solid fa-database icon-generic',
+    'react.js': 'devicon-react-original colored',
+    'html': 'devicon-html5-plain colored',
+    'css': 'devicon-css3-plain colored',
+    'scss': 'devicon-sass-original colored',
+    'es6': 'fa-brands fa-js icon-generic',
+    'tailwind css': 'devicon-tailwindcss-plain colored',
+    'figma': 'devicon-figma-plain colored',
+    'spring boot': 'devicon-spring-plain colored',
+    'node.js': 'devicon-nodejs-plain colored',
+    'express.js': 'devicon-express-original',
+    'fastapi': 'devicon-fastapi-plain colored',
+    'fastmcp': 'fa-solid fa-server icon-generic',
+    'rest apis': 'fa-solid fa-plug icon-generic',
+    'junit': 'fa-solid fa-vial icon-generic',
+    'mockito': 'fa-solid fa-vial-circle-check icon-generic',
+    'vitest': 'devicon-vitest-plain colored',
+    'jest': 'devicon-jest-plain colored',
+    'llms': 'fa-solid fa-brain icon-generic',
+    'rag': 'fa-solid fa-diagram-project icon-generic',
+    'vector dbs': 'fa-solid fa-cube icon-generic',
+    'vector db': 'fa-solid fa-cube icon-generic',
+    'mcp': 'fa-solid fa-network-wired icon-generic',
+    'ai agent/skill customization': 'fa-solid fa-robot icon-generic',
+    'git': 'devicon-git-plain colored',
+    'gitlab': 'devicon-gitlab-plain colored',
+    'ci/cd': 'fa-solid fa-arrows-rotate icon-generic',
+    'docker': 'devicon-docker-plain colored',
+    'jenkins': 'devicon-jenkins-line colored',
+    'terraform': 'devicon-terraform-plain colored',
+    'mongodb': 'devicon-mongodb-plain colored',
+    'data structures & algorithms': 'fa-solid fa-sitemap icon-generic',
+    'operating systems': 'fa-solid fa-microchip icon-generic',
+    'dbms': 'fa-solid fa-database icon-generic',
+    'aws': 'devicon-amazonwebservices-plain-wordmark colored',
+    'gitlab api': 'devicon-gitlab-plain colored',
+    'gitlab mcp': 'fa-solid fa-network-wired icon-generic',
+    'nexusiq': 'fa-solid fa-shield-halved icon-generic',
+    'sonarqube': 'devicon-sonarqube-plain colored',
+    'fortify': 'fa-solid fa-shield-halved icon-generic',
+    'socket.io': 'fa-solid fa-bolt icon-generic',
+    'webrtc': 'fa-solid fa-video icon-generic',
+    'data analysis': 'fa-solid fa-chart-line icon-generic',
+    'financial apis': 'fa-solid fa-coins icon-generic'
+  };
+
+  function iconFor(label) {
+    const key = label.trim().toLowerCase();
+    return ICON_MAP[key] || 'fa-solid fa-code icon-generic';
+  }
+
+  document.querySelectorAll('.skill-tag, .tech-pill').forEach((tag) => {
+    const label = tag.textContent;
+    const cls = iconFor(label);
+    const icon = document.createElement('i');
+    cls.split(' ').forEach((c) => icon.classList.add(c));
+    tag.textContent = '';
+    tag.appendChild(icon);
+    const span = document.createElement('span');
+    span.textContent = label;
+    tag.appendChild(span);
+  });
+
+  // ── STAGGERED POP-IN FOR SKILL TAGS ──
+  document.querySelectorAll('.skill-group').forEach((group) => {
+    const tags = group.querySelectorAll('.skill-tag');
+    tags.forEach((t, i) => { t.style.setProperty('--tag-delay', (i * 0.05) + 's'); });
+  });
+  const tagPopObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-tag').forEach((t) => t.classList.add('tag-pop'));
+        tagPopObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.skill-group').forEach((g) => tagPopObserver.observe(g));
+
+
+  // ── SHINE SWEEP ELEMENTS ──
+  document.querySelectorAll('.proj-card, .exp-card, .edu-card, .skill-group').forEach((card) => {
+    const shine = document.createElement('span');
+    shine.className = 'shine-sweep';
+    card.appendChild(shine);
+  });
+
   // ── MOBILE MENU ──
   window.toggleMenu = function () {
     const m = document.getElementById('mobileMenu');
